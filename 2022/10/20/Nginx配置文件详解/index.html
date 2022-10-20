@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"zouhd.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="作者：程序员自由之路 出处：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;54chensongxia&#x2F;p&#x2F;12938929.html  Nginx的主配置文件是nginx.conf，这个配置文件一共由三部分组成，分别为全局块、events块和http块。在http块中，又包含http全局块、多个server块。每个server块中，可以包含server全局块和多个location块。在同一配置">
+  <meta name="description" content="Nginx的主配置文件是nginx.conf，这个配置文件一共由三部分组成，分别为全局块、events块和http块。在http块中，又包含http全局块、多个server块。每个server块中，可以包含server全局块和多个location块。在同一配置块中嵌套的配置块，各个之间不存在次序关系。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx配置文件详解">
 <meta property="og:url" content="https://zouhd.top/2022/10/20/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Zoud">
-<meta property="og:description" content="作者：程序员自由之路 出处：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;54chensongxia&#x2F;p&#x2F;12938929.html  Nginx的主配置文件是nginx.conf，这个配置文件一共由三部分组成，分别为全局块、events块和http块。在http块中，又包含http全局块、多个server块。每个server块中，可以包含server全局块和多个location块。在同一配置">
+<meta property="og:description" content="Nginx的主配置文件是nginx.conf，这个配置文件一共由三部分组成，分别为全局块、events块和http块。在http块中，又包含http全局块、多个server块。每个server块中，可以包含server全局块和多个location块。在同一配置块中嵌套的配置块，各个之间不存在次序关系。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-20T23:02:09.000Z">
-<meta property="article:modified_time" content="2022-10-20T16:41:11.607Z">
+<meta property="article:modified_time" content="2022-10-20T16:59:26.667Z">
 <meta property="article:author" content="Zoud">
 <meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-10-20 23:02:09 / 修改时间：16:41:11" itemprop="dateCreated datePublished" datetime="2022-10-20T23:02:09+00:00">2022-10-20</time>
+              <time title="创建时间：2022-10-20 23:02:09 / 修改时间：16:59:26" itemprop="dateCreated datePublished" datetime="2022-10-20T23:02:09+00:00">2022-10-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -258,11 +258,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p>作者：程序员自由之路</p>
-<p>出处：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/54chensongxia/p/12938929.html">https://www.cnblogs.com/54chensongxia/p/12938929.html</a></p>
-</blockquote>
-<p>Nginx的主配置文件是nginx.conf，这个配置文件一共由三部分组成，分别为<strong>全局块、events块和http块</strong>。在http块中，又包含http全局块、多个server块。每个server块中，可以包含server全局块和多个location块。在同一配置块中嵌套的配置块，各个之间不存在次序关系。</p>
+        <p>Nginx的主配置文件是nginx.conf，这个配置文件一共由三部分组成，分别为<strong>全局块、events块和http块</strong>。在http块中，又包含http全局块、多个server块。每个server块中，可以包含server全局块和多个location块。在同一配置块中嵌套的配置块，各个之间不存在次序关系。</p>
 <span id="more"></span>
 
 <p>配置文件支持大量可配置的指令，绝大多数指令不是特定属于某一个块的。同一个指令放在不同层级的块中，其作用域也不同，一般情况下，高一级块中的指令可以作用于自身所在的块和此块包含的所有低层级块。如果某个指令在两个不同层级的块中同时出现，则采用“就近原则”，即以较低层级块中的配置为准。比如，某指令同时出现在http全局块中和server块中，并且配置不同，则应该以server块中的配置为准。</p>
@@ -362,6 +358,10 @@
 <li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015681272">nginx 的 default_server 定义及匹配规则</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/nginx/nginx-d1aw28wa.html">W3C Nginx教程</a></li>
 </ul>
+<blockquote>
+<p>作者：程序员自由之路</p>
+<p>出处：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/54chensongxia/p/12938929.html">https://www.cnblogs.com/54chensongxia/p/12938929.html</a></p>
+</blockquote>
 
     </div>
 
