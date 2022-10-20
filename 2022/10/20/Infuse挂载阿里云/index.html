@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="code-PIvyVJMbqe">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zouhd.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在服务器上部署Alist以便Infuse可以挂载阿里云盘WEBDav，实现多个设备随处观看影音内容，并且多设备同步观看进度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Infuse挂载阿里云盘">
+<meta property="og:url" content="https://zouhd.top/2022/10/20/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/index.html">
+<meta property="og:site_name" content="Zoud">
+<meta property="og:description" content="在服务器上部署Alist以便Infuse可以挂载阿里云盘WEBDav，实现多个设备随处观看影音内容，并且多设备同步观看进度。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zouhd.top/images/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/Untitled.png">
+<meta property="og:image" content="https://zouhd.top/images/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/Untitled%201.png">
+<meta property="article:published_time" content="2022-10-20T14:05:28.000Z">
+<meta property="article:modified_time" content="2022-10-20T16:41:11.607Z">
+<meta property="article:author" content="Zoud">
+<meta property="article:tag" content="影音">
+<meta property="article:tag" content="自动化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zouhd.top/images/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/Untitled.png">
+
+<link rel="canonical" href="https://zouhd.top/2022/10/20/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Infuse挂载阿里云盘 | Zoud</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYW60M3P1Z"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DYW60M3P1Z');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b26cdce3fd0cc3f08718d4e7d8f14207";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Zoud" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zoud</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zouhd.top/2022/10/20/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zoud">
+      <meta itemprop="description" content="Zoud">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zoud">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Infuse挂载阿里云盘
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-20 14:05:28 / 修改时间：16:41:11" itemprop="dateCreated datePublished" datetime="2022-10-20T14:05:28+00:00">2022-10-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A5%BD%E7%8E%A9/" itemprop="url" rel="index"><span itemprop="name">好玩</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在服务器上部署Alist以便Infuse可以挂载阿里云盘WEBDav，实现多个设备随处观看影音内容，并且多设备同步观看进度。</p>
+<span id="more"></span>
+<h1 id="服务器搭建AList"><a href="#服务器搭建AList" class="headerlink" title="服务器搭建AList"></a>服务器搭建AList</h1><p><a target="_blank" rel="noopener" href="https://alist.nn.ci/guide/">Guide</a></p>
+<h2 id="使用Docker安装"><a href="#使用Docker安装" class="headerlink" title="使用Docker安装"></a>使用Docker安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 --name=<span class="string">&quot;alist&quot;</span> xhofe/alist:latest</span><br></pre></td></tr></table></figure>
+
+<p>查看默认的用户名密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it alist ./alist admin</span><br></pre></td></tr></table></figure>
+
+<h2 id="一键安装脚本"><a href="#一键安装脚本" class="headerlink" title="一键安装脚本"></a>一键安装脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">curl -fsSL <span class="string">&quot;https://alist.nn.ci/v3.sh&quot;</span> | bash -s install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新</span></span><br><span class="line">curl -fsSL <span class="string">&quot;https://alist.nn.ci/v3.sh&quot;</span> | bash -s update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载</span></span><br><span class="line">curl -fsSL <span class="string">&quot;https://alist.nn.ci/v3.sh&quot;</span> | bash -s uninstall</span><br></pre></td></tr></table></figure>
+
+<p>默认安装在<code>opt/ist</code>中。要自定义安装路径，请将安装路径添加为第二个参数，该参数必须是绝对路径（如果路径以alist结尾，则直接安装到给定路径，否则将安装到给定路径下alist目录中），例如安装到root：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install</span></span><br><span class="line">curl -fsSL <span class="string">&quot;https://alist.nn.ci/v3.sh&quot;</span> | bash -s install /root</span><br><span class="line"><span class="comment"># update</span></span><br><span class="line">curl -fsSL <span class="string">&quot;https://alist.nn.ci/v3.sh&quot;</span> | bash -s update /root</span><br><span class="line"><span class="comment"># Uninstall</span></span><br><span class="line">curl -fsSL <span class="string">&quot;https://alist.nn.ci/v3.sh&quot;</span> | bash -s uninstall /root</span><br></pre></td></tr></table></figure>
+
+<h2 id="检查安装是否成功"><a href="#检查安装是否成功" class="headerlink" title="检查安装是否成功"></a>检查安装是否成功</h2><p><code>AList</code>默认启动端口为<code>5244</code>，在浏览器中访问<code>http://xx.xx.xx.xx:5244</code>查看是否出现<code>AList</code>主页，如下图：（用户名密码参照安装步骤中获取）</p>
+<p><img src="/images/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/Untitled.png" alt="Untitled"></p>
+<p>登录后点击“管理”进入管理页面</p>
+<h2 id="AList挂载阿里云盘"><a href="#AList挂载阿里云盘" class="headerlink" title="AList挂载阿里云盘"></a>AList挂载阿里云盘</h2><p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive.html">阿里云盘</a></p>
+<p>在AList控制面板点击“存储”，添加驱动方式为阿里云盘的新存储。</p>
+<ul>
+<li>挂载路径：唯一标识，即要挂载到的位置，如果要挂载到根目录，就是 <code>/</code>。这个是在AList上的目录，建议按照功能进行自定义。</li>
+<li>顺序：当有多个账户时，用于排序，越小越靠前。</li>
+<li>缓存过期：目录结构的缓存时间。</li>
+<li>Web代理：网页预览、下载和直接链接是否通过中转。如果你打开此项，建议你设置**<a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/config/site.html#api%E5%9C%B0%E5%9D%80">Api 地址</a>**，以帮助alist更好的工作。</li>
+<li>WebDAV策略：<ul>
+<li>302 重定向：重定向到真实链接（在服务器部署一般选择这一项）</li>
+<li>使用代理 URL：重定向到代理 URL</li>
+<li>本机代理：直接通过本地中转返回数据（最佳兼容性）</li>
+</ul>
+</li>
+<li>下载代理 URL：开启代理时不填写此字段，默认使用本机进行传输。提供了两种代理方式：<a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/common.html#%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%90%86-url">https://alist.nn.ci/zh/guide/drivers/common.html#下载代理-url</a></li>
+<li>提取文件夹：<ul>
+<li>提取到前面：排序时将所有文件夹放在前面</li>
+<li>提取到后面：排序时将所有文件夹放在后面</li>
+</ul>
+</li>
+<li>排序：<ul>
+<li>排序方式：按什么排序</li>
+<li>排序方向：排序方向是升序还是降序</li>
+</ul>
+</li>
+</ul>
+<h3 id="获取刷新令牌"><a href="#获取刷新令牌" class="headerlink" title="获取刷新令牌"></a>获取刷新令牌</h3><p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive.html#%E5%88%B7%E6%96%B0%E4%BB%A4%E7%89%8C">阿里云盘</a></p>
+<h3 id="根文件夹ID"><a href="#根文件夹ID" class="headerlink" title="根文件夹ID"></a>根文件夹ID</h3><p>打开阿里云驱动官网，点击进入要设置的文件夹时点击 URL 后面的字符串</p>
+<p>如 <strong><a target="_blank" rel="noopener" href="https://www.aliyundrive.com/drive/folder/5fe01e1830601baf774e4827a9fb8fb2b5bf7940">https://www.aliyundrive.com/drive/folder/5fe01e1830601baf774e4827a9fb8fb2b5bf7940open in new window</a></strong></p>
+<p>这个文件夹的 file_id 即为 <code>5fe01e1830601baf774e4827a9fb8fb2b5bf7940</code>：</p>
+<p><img src="/images/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/Untitled%201.png" alt="Untitled"></p>
+<h1 id="Infuse挂载WebDAV"><a href="#Infuse挂载WebDAV" class="headerlink" title="Infuse挂载WebDAV"></a>Infuse挂载WebDAV</h1><p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/webdav.html#webdav-%E9%85%8D%E7%BD%AE">WebDAV</a></p>
+<p>打开Infuse，在“文件”中选择“新增文件来源”，“添加WebDAV”。</p>
+<ul>
+<li>名称：自定义，如“影视”。</li>
+<li>通讯协定：如果网站开启了反向代理且使用SSL，选择WebDAV(HTTPS)，否则选择WebDAV。</li>
+<li>位址：<code>http[s]://domain</code></li>
+<li>用户名：与网页端用户名一致，无特殊需求使用admin即可。</li>
+<li>密码：与网页端密码一致。</li>
+<li>路径：<code>/dav</code>根目录，<code>/dav/影视</code>自定义目录。</li>
+<li>端口：AList运行的端口，默认为<code>5244</code></li>
+</ul>
+<p>成功挂载WebDAV之后，请将文件夹添加到“我的最爱”（即点击文件夹后面的星号），这样infuse主屏幕才会出现云盘中的影视内容，并自动匹配元数据。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>☕️谢谢你的咖啡！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Zoud 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Zoud 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/MetaMask.png" alt="Zoud 比特币">
+        <p>比特币</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Zoud
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://zouhd.top/2022/10/20/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/" title="Infuse挂载阿里云盘">https://zouhd.top/2022/10/20/Infuse挂载阿里云/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/Zou__d">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%BD%B1%E9%9F%B3/" rel="tag"><i class="fa fa-tag"></i> 影音</a>
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> 自动化</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/20/%E5%BE%AE%E5%8D%9A%E8%B6%85%E8%AF%9D%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/" rel="prev" title="微博超话自动签到">
+      <i class="fa fa-chevron-left"></i> 微博超话自动签到
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/20/%E5%8C%97%E4%BA%AC%E9%87%8E%E7%94%9F%E5%8A%A8%E7%89%A9%E5%9B%AD%E6%B8%B8%E7%8E%A9%E6%94%BB%E7%95%A5/" rel="next" title="北京野生动物园游玩攻略">
+      北京野生动物园游玩攻略 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAAList"><span class="nav-number">1.</span> <span class="nav-text">服务器搭建AList</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">使用Docker安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">一键安装脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F"><span class="nav-number">1.3.</span> <span class="nav-text">检查安装是否成功</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AList%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98"><span class="nav-number">1.4.</span> <span class="nav-text">AList挂载阿里云盘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%88%B7%E6%96%B0%E4%BB%A4%E7%89%8C"><span class="nav-number">1.4.1.</span> <span class="nav-text">获取刷新令牌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%96%87%E4%BB%B6%E5%A4%B9ID"><span class="nav-number">1.4.2.</span> <span class="nav-text">根文件夹ID</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Infuse%E6%8C%82%E8%BD%BDWebDAV"><span class="nav-number">2.</span> <span class="nav-text">Infuse挂载WebDAV</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zoud"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zoud</p>
+  <div class="site-description" itemprop="description">Zoud</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HaodongZou" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HaodongZou" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zouhaodong@outlook.com" title="E-Mail → mailto:zouhaodong@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5694446080" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5694446080" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Zou__d" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Zou__d" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/Zou_d" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;Zou_d" rel="noopener" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">冀ICP备2022023523号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zoud</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">30k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">27 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://zouhd.top/2022/10/20/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/',]
+      });
+      });
+  </script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'e6d081712e18af7762b4',
+      clientSecret: '087094a61745bb092ef492e09085fa6a5e38299b',
+      repo        : 'Zoud',
+      owner       : 'HaodongZou',
+      admin       : ['HaodongZou'],
+      id          : '39258321ebcf401f64041b2e9d7a8c43',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

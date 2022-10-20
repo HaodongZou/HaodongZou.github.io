@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Zoud</title>
+  <icon>https://zouhd.top/icon.png</icon>
+  
+  <link href="https://zouhd.top/atom.xml" rel="self"/>
+  
+  <link href="https://zouhd.top/"/>
+  <updated>2022-10-20T16:41:11.607Z</updated>
+  <id>https://zouhd.top/</id>
+  
+  <author>
+    <name>Zoud</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nginx配置文件详解</title>
+    <link href="https://zouhd.top/2022/10/20/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://zouhd.top/2022/10/20/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</id>
+    <published>2022-10-20T23:02:09.000Z</published>
+    <updated>2022-10-20T16:41:11.607Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;作者：程序员自由之路&lt;/p&gt;
+&lt;p&gt;出处：&lt;a href=&quot;https://www.cnblogs.com/54chensongxia/p/12938929.html&quot;&gt;https://www.cnblogs.com/54chensongxia/p/12938929.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Nginx的主配置文件是nginx.conf，这个配置文件一共由三部分组成，分别为&lt;strong&gt;全局块、events块和http块&lt;/strong&gt;。在http块中，又包含http全局块、多个server块。每个server块中，可以包含server全局块和多个location块。在同一配置块中嵌套的配置块，各个之间不存在次序关系。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://zouhd.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Nginx" scheme="https://zouhd.top/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx是如何处理请求的</title>
+    <link href="https://zouhd.top/2022/10/20/Nginx%E6%98%AF%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E7%9A%84/"/>
+    <id>https://zouhd.top/2022/10/20/Nginx%E6%98%AF%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E7%9A%84/</id>
+    <published>2022-10-20T22:35:12.000Z</published>
+    <updated>2022-10-20T16:41:11.607Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文内容基于Nginx官方文档&lt;a href=&quot;https://nginx.org/en/docs/http/request_processing.html#how_to_prevent_undefined_server_names&quot;&gt;How nginx processes a request&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://zouhd.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Nginx" scheme="https://zouhd.top/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zsh/Bash</title>
+    <link href="https://zouhd.top/2022/10/20/Zsh-Bash/"/>
+    <id>https://zouhd.top/2022/10/20/Zsh-Bash/</id>
+    <published>2022-10-20T17:32:57.000Z</published>
+    <updated>2022-10-20T16:41:11.607Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Zsh&amp;#x2F;Bash配置笔记&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="软件" scheme="https://zouhd.top/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="Zsh" scheme="https://zouhd.top/tags/Zsh/"/>
+    
+    <category term="Bash" scheme="https://zouhd.top/tags/Bash/"/>
+    
+    <category term="命令行" scheme="https://zouhd.top/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Clash</title>
+    <link href="https://zouhd.top/2022/10/20/Clash-ClashX-b0683d2c97ed431aa3de07c36925b51e/"/>
+    <id>https://zouhd.top/2022/10/20/Clash-ClashX-b0683d2c97ed431aa3de07c36925b51e/</id>
+    <published>2022-10-20T14:47:28.000Z</published>
+    <updated>2022-10-20T16:41:11.607Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;关于Clash在Centos服务器上的部署、Subconverter（订阅转换工具）部署等&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="软件" scheme="https://zouhd.top/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="科学上网" scheme="https://zouhd.top/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+    <category term="网络" scheme="https://zouhd.top/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>北京野生动物园游玩攻略</title>
+    <link href="https://zouhd.top/2022/10/20/%E5%8C%97%E4%BA%AC%E9%87%8E%E7%94%9F%E5%8A%A8%E7%89%A9%E5%9B%AD%E6%B8%B8%E7%8E%A9%E6%94%BB%E7%95%A5/"/>
+    <id>https://zouhd.top/2022/10/20/%E5%8C%97%E4%BA%AC%E9%87%8E%E7%94%9F%E5%8A%A8%E7%89%A9%E5%9B%AD%E6%B8%B8%E7%8E%A9%E6%94%BB%E7%95%A5/</id>
+    <published>2022-10-20T14:09:18.000Z</published>
+    <updated>2022-10-20T16:41:11.607Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;和宝子去野生动物园玩啦！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活" scheme="https://zouhd.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="北京" scheme="https://zouhd.top/tags/%E5%8C%97%E4%BA%AC/"/>
+    
+    <category term="旅游" scheme="https://zouhd.top/tags/%E6%97%85%E6%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Infuse挂载阿里云盘</title>
+    <link href="https://zouhd.top/2022/10/20/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    <id>https://zouhd.top/2022/10/20/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/</id>
+    <published>2022-10-20T14:05:28.000Z</published>
+    <updated>2022-10-20T16:41:11.607Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在服务器上部署Alist以便Infuse可以挂载阿里云盘WEBDav，实现多个设备随处观看影音内容，并且多设备同步观看进度。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="好玩" scheme="https://zouhd.top/categories/%E5%A5%BD%E7%8E%A9/"/>
+    
+    
+    <category term="影音" scheme="https://zouhd.top/tags/%E5%BD%B1%E9%9F%B3/"/>
+    
+    <category term="自动化" scheme="https://zouhd.top/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微博超话自动签到</title>
+    <link href="https://zouhd.top/2022/10/20/%E5%BE%AE%E5%8D%9A%E8%B6%85%E8%AF%9D%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/"/>
+    <id>https://zouhd.top/2022/10/20/%E5%BE%AE%E5%8D%9A%E8%B6%85%E8%AF%9D%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/</id>
+    <published>2022-10-20T13:51:18.000Z</published>
+    <updated>2022-10-20T16:41:11.607Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在腾讯云服务器上部署脚本对多个微博超话进行每日签到，可以自定义签到超话数量，签到时间等。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="好玩" scheme="https://zouhd.top/categories/%E5%A5%BD%E7%8E%A9/"/>
+    
+    
+    <category term="自动化" scheme="https://zouhd.top/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+  </entry>
+  
+</feed>
