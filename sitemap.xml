@@ -4,7 +4,7 @@
   <url>
     <loc>https://zouhd.top/tags/index.html</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +13,7 @@
   <url>
     <loc>https://zouhd.top/2022/10/20/Nginx%E6%98%AF%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E7%9A%84/</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +22,7 @@
   <url>
     <loc>https://zouhd.top/2022/10/20/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -31,7 +31,7 @@
   <url>
     <loc>https://zouhd.top/2022/10/20/Clash-ClashX-b0683d2c97ed431aa3de07c36925b51e/</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,7 +40,7 @@
   <url>
     <loc>https://zouhd.top/2022/10/20/Infuse%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -49,7 +49,7 @@
   <url>
     <loc>https://zouhd.top/2022/10/20/Zsh-Bash/</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -58,7 +58,7 @@
   <url>
     <loc>https://zouhd.top/2022/10/20/%E5%8C%97%E4%BA%AC%E9%87%8E%E7%94%9F%E5%8A%A8%E7%89%A9%E5%9B%AD%E6%B8%B8%E7%8E%A9%E6%94%BB%E7%95%A5/</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -67,7 +67,7 @@
   <url>
     <loc>https://zouhd.top/2022/10/20/%E5%BE%AE%E5%8D%9A%E8%B6%85%E8%AF%9D%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -76,7 +76,16 @@
   <url>
     <loc>https://zouhd.top/404.html</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zouhd.top/baidu_verify_code-SEqxLiY2Wk.html</loc>
+    
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -85,7 +94,7 @@
   <url>
     <loc>https://zouhd.top/about/index.html</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -94,7 +103,7 @@
   <url>
     <loc>https://zouhd.top/categories/index.html</loc>
     
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -103,7 +112,7 @@
 
   <url>
     <loc>https://zouhd.top/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -111,70 +120,70 @@
   
   <url>
     <loc>https://zouhd.top/tags/Nginx/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/tags/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/tags/%E5%BD%B1%E9%9F%B3/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/tags/Zsh/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/tags/Bash/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/tags/%E5%8C%97%E4%BA%AC/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/tags/%E6%97%85%E6%B8%B8/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -183,28 +192,28 @@
   
   <url>
     <loc>https://zouhd.top/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/categories/%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/categories/%E5%A5%BD%E7%8E%A9/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zouhd.top/categories/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2022-10-20</lastmod>
+    <lastmod>2022-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
