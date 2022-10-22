@@ -30,7 +30,7 @@
 <meta property="og:description" content="关于Clash在Centos服务器上的部署、Subconverter（订阅转换工具）部署等">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-20T14:47:28.000Z">
-<meta property="article:modified_time" content="2022-10-21T05:30:08.101Z">
+<meta property="article:modified_time" content="2022-10-22T12:19:33.121Z">
 <meta property="article:author" content="Zoud">
 <meta property="article:tag" content="科学上网">
 <meta property="article:tag" content="网络">
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-21 05:30:08" itemprop="dateModified" datetime="2022-10-21T05:30:08+00:00">2022-10-21</time>
+                <time title="修改时间：2022-10-22 12:19:33" itemprop="dateModified" datetime="2022-10-22T12:19:33+00:00">2022-10-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,7 +253,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>2.1k</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -276,14 +276,7 @@
 
 
 <h1 id="在CentOS安装clash"><a href="#在CentOS安装clash" class="headerlink" title="在CentOS安装clash"></a>在CentOS安装clash</h1><p><a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/wiki/clash-as-a-daemon#preface">clash as a daemon · Dreamacro&#x2F;clash Wiki</a></p>
-<h1 id="部署SubConverter"><a href="#部署SubConverter" class="headerlink" title="部署SubConverter"></a>部署SubConverter</h1><ul>
-<li><p><strong>备份配置文件⬇️ (for 迁移）</strong></p>
-<p>  <a target="_blank" rel="noopener" href="https://www.notion.so/pref-toml-fe362c89e46d4c79ab259444dc589876">pref.toml</a></p>
-<p>  <a target="_blank" rel="noopener" href="https://www.notion.so/groups-toml-a1e3036eaee247f78a51ab6fa0d50621">groups.toml</a></p>
-<p>  <a target="_blank" rel="noopener" href="https://www.notion.so/rulesets-toml-d07e8e7e5ce7413fa36ddf25e7170875">rulesets.toml</a></p>
-</li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>仓库地址：</p>
+<h1 id="部署SubConverter"><a href="#部署SubConverter" class="headerlink" title="部署SubConverter"></a>部署SubConverter</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>仓库地址：</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/tindy2013/subconverter">https://github.com/tindy2013/subconverter</a></p>
 <p>在服务器上安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_linux64.tar.gz</span><br><span class="line">tar -xvzf subconverter_linux64.tar.gz subconverter &amp;&amp; <span class="built_in">chmod</span> +x subconverter/subconverter</span><br></pre></td></tr></table></figure>
@@ -291,7 +284,7 @@
 <h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><ol>
 <li>默认主配置文件为<code>pref.toml</code>，修改<code>[common]</code>字段下的<code>default_url</code>添加多个订阅地址（不需要URL Encode）</li>
 </ol>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version</span> = <span class="number">1</span></span><br><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="comment"># API mode, set to true to prevent loading local subscriptions or serving local files directly</span></span><br><span class="line"><span class="attr">api_mode</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Access token used for performing critical action through Web interface</span></span><br><span class="line"><span class="attr">api_access_token</span> = <span class="string">&quot;zouhaodong&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认订阅链接, 如有多个连接需要使用&quot;|&quot;进行分割，用以在请求未提供订阅链接时处理订阅，可以为文件或者链接</span></span><br><span class="line"><span class="attr">default_url</span> = [<span class="string">&quot;https://xxxx.xxxx/ssss&quot;</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version</span> = <span class="number">1</span></span><br><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="comment"># API mode, set to true to prevent loading local subscriptions or serving local files directly</span></span><br><span class="line"><span class="attr">api_mode</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Access token used for performing critical action through Web interface</span></span><br><span class="line"><span class="attr">api_access_token</span> = <span class="string">&quot;password&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认订阅链接, 如有多个连接需要使用&quot;|&quot;进行分割，用以在请求未提供订阅链接时处理订阅，可以为文件或者链接</span></span><br><span class="line"><span class="attr">default_url</span> = [<span class="string">&quot;https://xxxx.xxxx/ssss&quot;</span>]</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>开启Emoji</li>
@@ -322,16 +315,6 @@
 <li>添加自定义规则（以添加byr.pt为例）</li>
 </ul>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在rules/Costom.list中添加</span></span><br><span class="line">DOMAIN-SUFFIX,byr.pt</span><br></pre></td></tr></table></figure>
-
-<h1 id="🙅白嫖订阅节点"><a href="#🙅白嫖订阅节点" class="headerlink" title="🙅白嫖订阅节点"></a>🙅白嫖订阅节点</h1><p><a target="_blank" rel="noopener" href="https://www.ahhhhfs.com/29583/">2022 免费白嫖节点方法 | ahhhhfs - A姐分享</a></p>
-<ol>
-<li>打开<a target="_blank" rel="noopener" href="https://www.zoomeye.org/">https://www.zoomeye.org</a>，登录并搜索<code>title:”Openwrt”</code></li>
-<li>使用查找结果中的IP地址➕Openwrt的端口号访问</li>
-<li>尝试密码<code>password</code></li>
-<li>如果能进入管理界面，在服务中一般能找到<code>PassWall</code>或者<code>Clash</code>、<code>V2Ray</code>相关内容并进去复制订阅链接</li>
-<li>使用订阅转换工具转换订阅</li>
-</ol>
-
     </div>
 
     
@@ -488,7 +471,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8CentOS%E5%AE%89%E8%A3%85clash"><span class="nav-number">1.</span> <span class="nav-text">在CentOS安装clash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2SubConverter"><span class="nav-number">2.</span> <span class="nav-text">部署SubConverter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="nav-number">2.3.</span> <span class="nav-text">开机自启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A8%A1%E7%89%88%E2%80%94%E2%80%94%E4%BB%A5%E5%BC%80%E5%90%AFIPV6%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.4.</span> <span class="nav-text">修改配置文件模版——以开启IPV6为例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99"><span class="nav-number">2.5.</span> <span class="nav-text">添加自定义规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%99%85%E7%99%BD%E5%AB%96%E8%AE%A2%E9%98%85%E8%8A%82%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">🙅白嫖订阅节点</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8CentOS%E5%AE%89%E8%A3%85clash"><span class="nav-number">1.</span> <span class="nav-text">在CentOS安装clash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2SubConverter"><span class="nav-number">2.</span> <span class="nav-text">部署SubConverter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="nav-number">2.3.</span> <span class="nav-text">开机自启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A8%A1%E7%89%88%E2%80%94%E2%80%94%E4%BB%A5%E5%BC%80%E5%90%AFIPV6%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.4.</span> <span class="nav-text">修改配置文件模版——以开启IPV6为例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99"><span class="nav-number">2.5.</span> <span class="nav-text">添加自定义规则</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
