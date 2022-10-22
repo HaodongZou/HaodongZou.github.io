@@ -18,15 +18,6 @@ tags:
 
 # 部署SubConverter
 
-- **备份配置文件⬇️ (for 迁移）**
-    
-    [pref.toml](https://www.notion.so/pref-toml-fe362c89e46d4c79ab259444dc589876)
-    
-    [groups.toml](https://www.notion.so/groups-toml-a1e3036eaee247f78a51ab6fa0d50621)
-    
-    [rulesets.toml](https://www.notion.so/rulesets-toml-d07e8e7e5ce7413fa36ddf25e7170875)
-    
-
 ## 安装
 
 仓库地址：
@@ -51,7 +42,7 @@ version = 1
 api_mode = false
 
 # Access token used for performing critical action through Web interface
-api_access_token = "zouhaodong"
+api_access_token = "password"
 
 # 默认订阅链接, 如有多个连接需要使用"|"进行分割，用以在请求未提供订阅链接时处理订阅，可以为文件或者链接
 default_url = ["https://xxxx.xxxx/ssss"]
@@ -137,13 +128,3 @@ ruleset = "rules/Costom.list"
 # 在rules/Costom.list中添加
 DOMAIN-SUFFIX,byr.pt
 ```
-
-# 🙅白嫖订阅节点
-
-[2022 免费白嫖节点方法 | ahhhhfs - A姐分享](https://www.ahhhhfs.com/29583/)
-
-1. 打开[https://www.zoomeye.org](https://www.zoomeye.org/)，登录并搜索`title:”Openwrt”`
-2. 使用查找结果中的IP地址➕Openwrt的端口号访问
-3. 尝试密码`password`
-4. 如果能进入管理界面，在服务中一般能找到`PassWall`或者`Clash`、`V2Ray`相关内容并进去复制订阅链接
-5. 使用订阅转换工具转换订阅
